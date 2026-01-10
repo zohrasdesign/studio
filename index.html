@@ -1,219 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zohra´s Design - Rebuilt Your Life</title>
-  <style>
-    /* Reset básico */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZohrasDesign</title>
+<style>
+  /* Reset */
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
 
-    body {
-      background: #f5f5f5;
-      color: #333;
-      line-height: 1.6;
-    }
+  body { background:#f5f5f5; color:#fff; }
 
-    /* Cabeçalho com degradê lilás → azul */
-    header {
-      background: linear-gradient(135deg, #cfa4ff, #7fbfff);
-      color: #fff;
-      padding: 50px 20px;
-      text-align: center;
-    }
-    header img {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 20px auto;
-    }
+  /* Cabeçalho com degradê lilás → azul escuro */
+  header {
+    height: 100vh;
+    background: linear-gradient(135deg, #cfa4ff, #3a5cbf);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
 
-    /* Menu de navegação */
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    nav a {
-      padding: 15px 25px;
-      display: inline-block;
-      color: #7fbfff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      background: #7fbfff;
-      color: #fff;
-      border-radius: 10px;
-    }
+  header img {
+    width: 150px;
+    margin-bottom: 20px;
+  }
 
-    /* Seções */
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom:10px;
+  }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #7fbfff;
-      text-align: center;
-    }
+  header p {
+    font-size:1.2rem;
+    max-width:700px;
+  }
 
-    section p {
-      font-size: 1.1rem;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+  .btn {
+    margin-top:20px;
+    padding:12px 30px;
+    background:#ff9fff;
+    border:none;
+    border-radius:25px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+  }
 
-    /* Cards de serviços e projetos */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: 0.3s;
-      text-align: center;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .card h3 {
-      color: #cfa4ff;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-    }
+  .btn:hover { background:#7fbfff; }
 
-    /* Footer */
-    footer {
-      background: #7fbfff;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    footer a {
-      color: #fff;
-      text-decoration: underline;
-    }
+  nav {
+    display:flex;
+    justify-content:center;
+    background:#fff;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
 
-    /* Botão */
-    .btn {
-      display: inline-block;
-      padding: 12px 30px;
-      background: #cfa4ff;
-      color: #fff;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #7fbfff;
-    }
-  </style>
+  nav a {
+    padding:15px 25px;
+    color:#3a5cbf;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+  }
+
+  nav a:hover {
+    background:#3a5cbf;
+    color:#fff;
+    border-radius:10px;
+  }
+
+  section {
+    padding:60px 20px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+
+  section h2 {
+    font-size:2rem;
+    margin-bottom:20px;
+    color:#3a5cbf;
+    text-align:center;
+  }
+
+  section p {
+    font-size:1.1rem;
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+  }
+
+  /* Projetos interativos */
+  #projects {
+    position:relative;
+    color:#fff;
+  }
+
+  .project-buttons {
+    text-align:center;
+    margin-bottom:30px;
+  }
+
+  .project-buttons button {
+    margin:0 10px;
+    padding:10px 20px;
+    background:#cfa4ff;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#fff;
+    transition:0.3s;
+  }
+
+  .project-buttons button.active, .project-buttons button:hover {
+    background:#3a5cbf;
+  }
+
+  .project-card {
+    position:relative;
+    width:100%;
+    height:400px;
+    display:none;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .project-card.active { display:block; }
+
+  .project-card img {
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(50%);
+  }
+
+  .project-card .content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    padding:20px;
+  }
+
+  .project-card .content h3 {
+    font-size:2rem;
+    margin-bottom:10px;
+    color:#ffceff;
+  }
+
+  .project-card .content p {
+    font-size:1.1rem;
+    color:#fff;
+  }
+
+  footer {
+    background:#3a5cbf;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+  }
+
+  footer a { color:#fff; text-decoration:underline; }
+
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <img src="2025-12-26 at 17.49.55.jpeg" alt="ZohrasDesign Logo">
-    <h1>ZohrasDesign</h1>
-    <p>Helping you organize your life, achieve goals, and overcome procrastination & overwhelm</p>
-    <a href="#services" class="btn">Discover How</a>
-  </header>
+<!-- Cabeçalho -->
+<header>
+  <img src="logo.jpeg" alt="ZohrasDesign Logo">
+  <h1>ZohrasDesign</h1>
+  <p>Helping you organize your life, achieve goals, and overcome procrastination & overwhelm</p>
+  <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});">See Projects</button>
+</header>
 
-  <!-- Navegação -->
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- Navegação -->
+<nav>
+  <a href="#projects">Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <!-- Serviços / Cards -->
-  <section id="services">
-    <h2>What I Offer</h2>
-    <p>Practical tools and guidance to improve productivity, focus, and organization</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Goal Setting</h3>
-        <p>Create clear, actionable goals to stay motivated and track your progress.</p>
-      </div>
-      <div class="card">
-        <h3>Organization</h3>
-        <p>Learn systems and techniques to organize your tasks, workspace, and mind.</p>
-      </div>
-      <div class="card">
-        <h3>Procrastination Help</h3>
-        <p>Strategies to beat procrastination and start taking action immediately.</p>
-      </div>
-      <div class="card">
-        <h3>Overwhelm Management</h3>
-        <p>Step-by-step guidance to handle multiple tasks without stress or anxiety.</p>
-      </div>
+<!-- Projetos -->
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="project-buttons">
+    <button class="active" onclick="showProject(0)">1</button>
+    <button onclick="showProject(1)">2</button>
+    <button onclick="showProject(2)">3</button>
+    <button onclick="showProject(3)">4</button>
+  </div>
+
+  <div class="project-card active">
+    <img src="mockup1.png" alt="Project 1">
+    <div class="content">
+      <h3>Project One</h3>
+      <p>Description about Project One. Goals, steps, and results shown here.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- Projetos -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="mockup1.png" alt="mockup1.png">
-        <h3>Project One</h3>
-        <p>Short description about the project. Goals achieved, key steps, and outcomes.</p>
-      </div>
-      <div class="card">
-        <img src="MOCKUP 2026.jpeg" alt="MOCKUP 2026.jpeg">
-        <h3>Project Two</h3>
-        <p>Short description about the project. Goals achieved, key steps, and outcomes.</p>
-      </div>
-      <!-- Adiciona mais cards para outros projetos -->
+  <div class="project-card">
+    <img src="MOCKUP 2026.jpeg" alt="Project 2">
+    <div class="content">
+      <h3>Project Two</h3>
+      <p>Description about Project Two. Goals, steps, and results shown here.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- Sobre -->
-  <section id="about">
-    <h2>About ZohrasDesign</h2>
-    <p>I am passionate about helping people reach their full potential through organization, planning, and mindful productivity. Together, we’ll tackle overwhelm and procrastination to achieve meaningful results.</p>
-  </section>
+  <div class="project-card">
+    <img src="mockup3.3.jpeg" alt="Project 3">
+    <div class="content">
+      <h3>Project Three</h3>
+      <p>Description about Project Three. Goals, steps, and results shown here.</p>
+    </div>
+  </div>
 
-  <!-- Contacto -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Have a project, goal, or challenge? Reach out and let’s organize your path to success.</p>
-    <p>Email: <a href="mailto:fatimaechcharrat27@gmail.com">fatimaechcharrat27@gmail.com</a></p>
-  </section>
+  <div class="project-card">
+    <img src="mockup4.4.jpeg" alt="Project 4">
+    <div class="content">
+      <h3>Project Four</h3>
+      <p>Description about Project Four. Goals, steps, and results shown here.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 ZohrasDesign. | <a href="#">Privacy Policy</a>
-  </footer>
+<!-- Sobre -->
+<section id="about">
+  <h2>About Zohra´s Design</h2>
+  <p>I am passionate about helping people reach their full potential through organization, planning, and mindful productivity. Together, we’ll tackle overwhelm and procrastination to achieve meaningful results.</p>
+</section>
+
+<!-- Contacto -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Have a project, goal, or challenge? Reach out and let’s organize your path to success.</p>
+  <p>Email: <a href="fatimaechcharrat27@gmail.com">fatimaechcharrat27@gmail.com</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2026 ZohrasDesign | <a href="#">Privacy Policy</a>
+</footer>
+
+<script>
+  const projects = document.querySelectorAll('.project-card');
+  const buttons = document.querySelectorAll('.project-buttons button');
+
+  function showProject(index) {
+    projects.forEach(p => p.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('active'));
+    projects[index].classList.add('active');
+    buttons[index].classList.add('active');
+  }
+</script>
 
 </body>
 </html>
