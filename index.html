@@ -5,20 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zohra's Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="logo.png" type="image/png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#e0e6ff;color:#1b1b2f;}
+body{font-family:'Poppins',sans-serif;background:#f0f4ff;color:#1b1b2f;}
 a{text-decoration:none;color:inherit;}
 
 /* Top navigation */
 .topnav{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-  background:#6b5bff; padding:10px 20px; position:sticky;top:0; z-index:100; color:white;
+  background:#5d67ff; padding:10px 20px; position:sticky;top:0; z-index:100; color:white;
+  box-shadow:0 3px 6px rgba(0,0,0,0.1);
 }
-.logo-box{width:60px;height:60px;border-radius:15px;background:#a58fff;display:flex;align-items:center;justify-content:center;font-weight:bold;}
+.logo-box{width:60px;height:60px;border-radius:15px;background:#8a8fff;display:flex;align-items:center;justify-content:center;font-weight:bold;}
 .menu{display:flex;gap:15px;flex-wrap:wrap;margin-left:10px;}
-.menu a{padding:8px 12px;border-radius:8px;font-weight:600;transition:background 0.2s;color:white;}
-.menu a:hover{background:#8473ff;}
+.menu a{padding:8px 12px;border-radius:8px;font-weight:600;transition:background 0.2s;color:white;display:flex;align-items:center;gap:5px;}
+.menu a:hover{background:#747fff;}
 .disabled{opacity:0.5;cursor:not-allowed;}
 
 .content{padding:20px;}
@@ -31,10 +34,10 @@ p{font-weight:400;line-height:1.6;}
 .instagram{margin-bottom:20px;text-align:center;font-weight:600;font-size:16px;}
 .instagram a{color:#ff85c0;}
 
-/* Home Shop link */
+/* Home Shop icon */
 .home-shop{text-align:center;margin:30px 0;}
-.home-shop a{font-weight:700;color:#50c878;font-size:18px;transition:0.3s;}
-.home-shop a:hover{color:#3b9f61;}
+.home-shop img{width:40px;height:40px;cursor:pointer;transition:transform 0.3s;}
+.home-shop img:hover{transform:scale(1.2);}
 
 /* Home project thumbnails */
 .projects-home{
@@ -42,7 +45,7 @@ p{font-weight:400;line-height:1.6;}
 }
 .project-thumb{
   width:150px;height:100px;border-radius:25px;overflow:hidden;cursor:pointer;
-  box-shadow:0 6px 12px rgba(0,0,0,0.2);transition:transform 0.3s;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);transition:transform 0.3s;
 }
 .project-thumb:hover{transform:scale(1.05);}
 .project-thumb img{width:100%;height:100%;object-fit:cover;}
@@ -55,25 +58,26 @@ p{font-weight:400;line-height:1.6;}
 .project-box{background:rgba(255,255,255,0.95);padding:20px;border-radius:20px;max-width:90%;border-left:6px solid #50c878;}
 
 /* Footer link */
-.footer-link{display:inline-block;margin-top:10px;font-weight:600;color:#ff85c0;}
+.footer-link{display:inline-block;margin-top:10px;font-weight:600;color:#5d67ff;}
 
 /* Comments */
-.comments{margin-top:15px;background:#dcdcff;padding:10px;border-radius:12px;}
+.comments{margin-top:15px;background:#e2e4ff;padding:10px;border-radius:12px;}
 .comments h3{margin-bottom:8px;font-weight:600;}
 .comments textarea{width:100%;height:60px;border-radius:8px;border:1px solid #bbbaff;padding:8px;font-family:'Poppins',sans-serif;resize:none;}
-.comments button{margin-top:5px;padding:6px 12px;background:#6b5bff;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;}
+.comments button{margin-top:5px;padding:6px 12px;background:#5d67ff;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;}
 
 /* Shop page */
 .shop{max-width:600px;margin:auto;line-height:1.6;text-align:center;}
 
 /* About section */
-.about-box{background:#dcdcff;padding:20px;border-radius:20px;text-align:center;margin-top:30px;}
+.about-box{background:#e2e4ff;padding:20px;border-radius:20px;text-align:center;margin-top:30px;}
 
 /* Responsive adjustments */
 @media(max-width:600px){
   .project-thumb{width:45%;height:90px;}
   .menu{gap:10px;font-size:14px;}
   .project-box{padding:15px;}
+  .home-shop img{width:35px;height:35px;}
 }
 </style>
 </head>
@@ -81,14 +85,14 @@ p{font-weight:400;line-height:1.6;}
 
 <!-- Top navigation -->
 <div class="topnav">
-  <div class="logo.jpeg">Logo</div>
+  <div class="logo-box"><img src="logo.png" alt="Logo" style="width:40px;height:40px;"></div>
   <div class="menu">
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('about')">About</a>
     <a onclick="showPage('contact')">Contact</a>
     <a onclick="showPage('projects')">Projetos</a>
     <a class="disabled">Project 5 – Coming Soon</a>
-    <a onclick="showPage('shop')">Shop</a>
+    <a onclick="showPage('shop')"><img src="cart.png" alt="Shop"></a>
   </div>
 </div>
 
@@ -96,38 +100,18 @@ p{font-weight:400;line-height:1.6;}
 
   <!-- Home -->
   <section id="home" class="active">
-    <div class="instagram">Follow me on <a href="https://www.instagram.com/zohrasdesign?igsh=MzZkbHJyZ3Mod2lj" target="_blank">@zohra.design</a></div>
-    <div class="home-shop"><a href="https://payhip.com/ZohrasDesign" target="_blank">Visit Shop →</a></div>
+    <div class="instagram">Follow me on <a href="https://www.instagram.com/" target="_blank">@zohra.design</a></div>
+    <div class="home-shop"><a href="https://payhip.com/ZohrasDesign" target="_blank"><img src="cart.png" alt="Shop"></a></div>
     <div class="about-box">
       <h2>About Zohra's Design</h2>
-      <p>At Zohra´s Design, we believe that organization shouldn´t be complicated or stressfull. That´s why we created simple, clean, beautifull and practical digital planners and trackers designed to help you take control of your day and your goals-without overwhelm.
-
-
-
-Our products are made with care for people who want to stay positive but don´t have time for complicated systems. Whether you´re just starting your planning journey or looking for easy tools to keep you on track, we´re here to help you make everyday count.
-
-
-
-Thank you for trusting Zohra´s Design to be part of your organization journey!
-
-</p>
+      <p>We help people organize, reduce stress, and achieve success with clarity and calm routines.</p>
     </div>
   </section>
 
-  <!-- About (separate page if needed) -->
+  <!-- About -->
   <section id="about">
     <h1>About Zohra's Design</h1>
-    <p>At Zohra´s Design, we believe that organization shouldn´t be complicated or stressfull. That´s why we created simple, clean, beautifull and practical digital planners and trackers designed to help you take control of your day and your goals-without overwhelm.
-
-
-
-Our products are made with care for people who want to stay positive but don´t have time for complicated systems. Whether you´re just starting your planning journey or looking for easy tools to keep you on track, we´re here to help you make everyday count.
-
-
-
-Thank you for trusting Zohra´s Design to be part of your organization journey!
-
-</p>
+    <p>We create organization systems to help you leave procrastination and stress behind, moving forward with clarity and success.</p>
     <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
   </section>
 
@@ -142,10 +126,10 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
   <section id="projects">
     <h1>Our Projects</h1>
     <div class="projects-home">
-      <div class="project-thumb" onclick="showPage('project1')"><img src="project1.png" alt="Project 1"></div>
-      <div class="project-thumb" onclick="showPage('project2')"><img src="project2.jpeg" alt="Project 2"></div>
-      <div class="project-thumb" onclick="showPage('project3')"><img src="project3.jpeg" alt="Project 3"></div>
-      <div class="project-thumb" onclick="showPage('project4')"><img src="project4.jpeg" alt="Project 4"></div>
+      <div class="project-thumb" onclick="showPage('project-1')"><img src="project-1.png" alt="Project 1"></div>
+      <div class="project-thumb" onclick="showPage('project-2')"><img src="project-2.jpeg" alt="Project 2"></div>
+      <div class="project-thumb" onclick="showPage('project-3.jpeg')"><img src="project-3.jpeg" alt="Project 3"></div>
+      <div class="project-thumb" onclick="showPage('project-4.jpeg')"><img src="project-4.jpeg" alt="Project 4"></div>
     </div>
   </section>
 
@@ -154,8 +138,8 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
     <div class="project" style="background-image:url('project-1.png');">
       <div class="project-box">
         <h2>Project One</h2>
-        <p>This project helps you structure your week tasks, for never lost one again.</p>
-        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank">Shop this →</a>
+        <p>This project helps you structure your goals and build calm routines.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
         <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
       </div>
     </div>
@@ -166,8 +150,8 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
     <div class="project" style="background-image:url('project-2.jpeg');">
       <div class="project-box">
         <h2>Project Two</h2>
-        <p>A super planner for this new year 2026,aesthetic, funcional, pratical for all year along.</p>
-        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank">Shop this →</a>
+        <p>A system focused on reducing mental overload and decision fatigue.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
         <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
       </div>
     </div>
@@ -178,8 +162,8 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
     <div class="project" style="background-image:url('project-3.jpeg');">
       <div class="project-box">
         <h2>Project Three</h2>
-        <p>A calm planner adaptable for every year that come perfect for your mind.</p>
-        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank">Shop this →</a>
+        <p>Designed to help you stay consistent and aligned with your vision.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
         <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
       </div>
     </div>
@@ -190,8 +174,8 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
     <div class="project" style="background-image:url('project-4.jpeg');">
       <div class="project-box">
         <h2>Project Four</h2>
-        <p>A gentle but powerful approach to productivity and success, to get out of the overhelm bubble in a slow and gentle way.</p>
-        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank">Shop this →</a>
+        <p>A gentle but powerful approach to productivity and success.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
         <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
       </div>
     </div>
@@ -201,8 +185,214 @@ Thank you for trusting Zohra´s Design to be part of your organization journey!
   <section id="shop">
     <div class="shop">
       <h1>The Shop</h1>
-      <p>Welcome to the Zohra’s Design shop — a space where organization meets peace. Find digital tools, planners, and systems to support your goals and reduce stress.</p>
-      <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank">Shop Now →</a>
+      <p><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zohra's Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="logo.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#f0f4ff;color:#1b1b2f;}
+a{text-decoration:none;color:inherit;}
+
+/* Top navigation */
+.topnav{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  background:#5d67ff; padding:10px 20px; position:sticky;top:0; z-index:100; color:white;
+  box-shadow:0 3px 6px rgba(0,0,0,0.1);
+}
+.logo-box{width:60px;height:60px;border-radius:15px;background:#8a8fff;display:flex;align-items:center;justify-content:center;font-weight:bold;}
+.menu{display:flex;gap:15px;flex-wrap:wrap;margin-left:10px;}
+.menu a{padding:8px 12px;border-radius:8px;font-weight:600;transition:background 0.2s;color:white;display:flex;align-items:center;gap:5px;}
+.menu a:hover{background:#747fff;}
+.disabled{opacity:0.5;cursor:not-allowed;}
+
+.content{padding:20px;}
+section{display:none;}
+section.active{display:block;}
+h1{font-weight:800;margin-bottom:15px;}
+p{font-weight:400;line-height:1.6;}
+
+/* Instagram link */
+.instagram{margin-bottom:20px;text-align:center;font-weight:600;font-size:16px;}
+.instagram a{color:#ff85c0;}
+
+/* Home Shop icon */
+.home-shop{text-align:center;margin:30px 0;}
+.home-shop img{width:40px;height:40px;cursor:pointer;transition:transform 0.3s;}
+.home-shop img:hover{transform:scale(1.2);}
+
+/* Home project thumbnails */
+.projects-home{
+  display:flex;flex-wrap:wrap;gap:15px;margin-top:20px;justify-content:center;
+}
+.project-thumb{
+  width:150px;height:100px;border-radius:25px;overflow:hidden;cursor:pointer;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);transition:transform 0.3s;
+}
+.project-thumb:hover{transform:scale(1.05);}
+.project-thumb img{width:100%;height:100%;object-fit:cover;}
+
+/* Project pages */
+.project{
+  height:50vh;background-size:cover;background-position:center;
+  border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;padding:20px;
+}
+.project-box{background:rgba(255,255,255,0.95);padding:20px;border-radius:20px;max-width:90%;border-left:6px solid #50c878;}
+
+/* Footer link */
+.footer-link{display:inline-block;margin-top:10px;font-weight:600;color:#5d67ff;}
+
+/* Comments */
+.comments{margin-top:15px;background:#e2e4ff;padding:10px;border-radius:12px;}
+.comments h3{margin-bottom:8px;font-weight:600;}
+.comments textarea{width:100%;height:60px;border-radius:8px;border:1px solid #bbbaff;padding:8px;font-family:'Poppins',sans-serif;resize:none;}
+.comments button{margin-top:5px;padding:6px 12px;background:#5d67ff;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;}
+
+/* Shop page */
+.shop{max-width:600px;margin:auto;line-height:1.6;text-align:center;}
+
+/* About section */
+.about-box{background:#e2e4ff;padding:20px;border-radius:20px;text-align:center;margin-top:30px;}
+
+/* Responsive adjustments */
+@media(max-width:600px){
+  .project-thumb{width:45%;height:90px;}
+  .menu{gap:10px;font-size:14px;}
+  .project-box{padding:15px;}
+  .home-shop img{width:35px;height:35px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Top navigation -->
+<div class="topnav">
+  <div class="logo-box"><img src="logo.png" alt="Logo" style="width:40px;height:40px;"></div>
+  <div class="menu">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('contact')">Contact</a>
+    <a onclick="showPage('projects')">Projetos</a>
+    <a class="disabled">Project 5 – Coming Soon</a>
+    <a onclick="showPage('shop')"><img src="cart.png" alt="Shop"></a>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Home -->
+  <section id="home" class="active">
+    <div class="instagram">Follow me on <a href="https://www.instagram.com/zohrasdesign/?igsh=MzZkbHJyZ3Mod2lj" target="_blank">@zohra.design</a></div>
+    <div class="instagram">Follow me on <a href="https://www.instagram.com/studio.zohrasdesign?igsh=dWxzcGltaThIbHFx" target="_blank">@zohra.design</a></div>
+    <div class="home-shop"><a href="https://payhip.com/ZohrasDesign" target="_blank"><img src="cart.png" alt="Shop"></a></div>
+    <div class="about-box">
+      <h2>About Zohra's Design</h2>
+      <p>We help people organize, reduce stress, and achieve success with clarity and calm routines.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h1>About Zohra's Design</h1>
+    <p>I create organization systems to help you leave procrastination and stress behind, moving forward with clarity and success.At Zohra´s Design, I believe that organization shouldn´t be complicated or stressfull. That´s why I created simple, clean, beautifull and practical digital planners and trackers designed to help you take control of your day and your goals-without overwhelm. My products are made with care for people who want to stay positive but don´t have time for complicated systems. Whether you´re just starting your planning journey or looking for easy tools to keep you on track, I´m here to help you make everyday count. Thank you for trusting Zohra´s Design to be part of your organization journey!</p>
+    <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h1>Contact Us</h1>
+    <p>Email: <strong>fatimaechcharrat27@gmail.com</strong></p>
+    <div class="comments"><h3>Leave a Message:</h3><textarea placeholder="Write your message..."></textarea><button>Submit</button></div>
+  </section>
+
+  <!-- Projects page -->
+  <section id="projects">
+    <h1>Our Projects</h1>
+    <div class="projects-home">
+      <div class="project-thumb" onclick="showPage('project1')"><img src="project-1.png" alt="Project 1"></div>
+      <div class="project-thumb" onclick="showPage('project2')"><img src="project-2.jpeg" alt="Project 2"></div>
+      <div class="project-thumb" onclick="showPage('project3.jpeg')"><img src="project-3.jpeg" alt="Project 3"></div>
+      <div class="project-thumb" onclick="showPage('project4.jpeg')"><img src="project-4.jpeg" alt="Project 4"></div>
+    </div>
+  </section>
+
+  <!-- Project 1 -->
+  <section id="project1">
+    <div class="project" style="background-image:url('project-1.png');">
+      <div class="project-box">
+        <h2>Project One</h2>
+        <p>This project helps you structure your goals and build calm routines.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
+        <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 2 -->
+  <section id="project2">
+    <div class="project" style="background-image:url('project-2.jpeg');">
+      <div class="project-box">
+        <h2>Project Two</h2>
+        <p>A system focused on reducing mental overload and decision fatigue.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
+        <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 3 -->
+  <section id="project3">
+    <div class="project" style="background-image:url('project-3.jpeg');">
+      <div class="project-box">
+        <h2>Project Three</h2>
+        <p>Designed to help you stay consistent and aligned with your vision.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
+        <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 4 -->
+  <section id="project4">
+    <div class="project" style="background-image:url('project-4.jpeg');">
+      <div class="project-box">
+        <h2>Project Four</h2>
+        <p>A gentle but powerful approach to productivity and success.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
+        <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section id="shop">
+    <div class="shop">
+      <h1>The Shop</h1>
+      <p>At Zohra´s Design, I believe that organization shouldn´t be complicated or stressfull. That´s why I created simple, clean, beautifull and practical digital planners and trackers designed to help you take control of your day and your goals-without overwhelm. My products are made with care for people who want to stay positive but don´t have time for complicated systems. Whether you´re just starting your planning journey or looking for easy tools to keep you on track, I´m here to help you make everyday count. Thank you for trusting Zohra´s Design to be part of your organization journey!.</p>
+      <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
+      <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
+</p>
+      <a href="https://payhip.com/ZohrasDesign" class="footer-link" target="_blank"><img src="cart.png" alt="Shop"></a>
       <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
     </div>
   </section>
