@@ -7,200 +7,173 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background: #f4f8fc;
-      color: #2e3440;
-    }
+    body { font-family: 'Poppins', sans-serif; background:#f4f8fc; color:#2e3440; }
     a { text-decoration: none; color: inherit; }
 
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 260px;
-      height: 100%;
-      background: linear-gradient(180deg, #eef5fb, #f6f1fb);
-      padding: 30px 20px;
+    /* Top nav */
+    .topnav {
       display: flex;
-      flex-direction: column;
-      gap: 25px;
-      border-right: 1px solid #e1e8ee;
-    }
-    .brand {
-      display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 30px;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #eef5fb, #f6f1fb);
+      padding: 10px 20px;
+      border-bottom: 1px solid #e1e8ee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .logo-box {
-      width: 90px;
-      height: 90px;
-      border-radius: 22px;
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
       background: linear-gradient(135deg, #e6f0fb, #efe6fb);
-      border: 1px dashed #9bb8b3;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
       color: #6b7fa6;
+      font-weight: bold;
+    }
+    .menu {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-left: 10px;
     }
     .menu a {
-      padding: 10px;
-      border-radius: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
       font-weight: 600;
-      cursor: pointer;
       transition: background 0.2s;
+      cursor: pointer;
     }
-    .menu a:hover { background: #e6f2f1; }
-    .disabled { opacity: 0.5; cursor: not-allowed; }
+    .menu a:hover { background:#e6f2f1; }
+    .disabled { opacity:0.5; cursor:not-allowed; }
 
-    /* Content */
-    .content {
-      margin-left: 260px;
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-    }
+    .content { padding: 20px; }
+
     section { display: none; }
     section.active { display: block; }
 
-    h1 { font-weight: 800; margin-bottom: 15px; }
-    p { font-weight: 400; line-height: 1.6; }
+    h1 { font-weight: 800; margin-bottom:15px; }
+    p { font-weight: 400; line-height:1.6; }
 
-    /* Project thumbnails on Home */
+    /* Home project thumbnails */
     .projects-home {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
       margin-top: 20px;
+      justify-content: center;
     }
     .project-thumb {
-      width: 220px;
-      height: 140px;
-      border-radius: 30px;
+      width: 150px;
+      height: 100px;
+      border-radius: 25px;
       overflow: hidden;
-      position: relative;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       cursor: pointer;
-      transform: scale(0);
-      animation: appear 0.5s forwards;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
+    .project-thumb:hover { transform: scale(1.05); }
     .project-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
-    @keyframes appear { to { transform: scale(1); } }
 
-    /* Project Box */
+    /* Project pages */
     .project {
-      height: 60vh;
+      height: 50vh;
       background-size: cover;
       background-position: center;
       border-radius: 20px;
       display: flex;
       align-items: center;
-      padding: 40px;
+      justify-content: center;
       margin-bottom: 20px;
+      padding: 20px;
     }
     .project-box {
       background: rgba(255,255,255,0.9);
-      padding: 30px;
+      padding: 20px;
       border-radius: 20px;
-      max-width: 500px;
+      max-width: 90%;
       border-left: 6px solid #9bb8b3;
     }
 
     .footer-link {
-      margin-top: 20px;
       display: inline-block;
+      margin-top: 10px;
       font-weight: 600;
       color: #7a8fd3;
     }
 
     /* Comments */
-    .comments {
-      margin-top: 20px;
-      background: #eef5fb;
-      padding: 15px;
-      border-radius: 15px;
-    }
-    .comments h3 { margin-bottom: 10px; font-weight: 600; }
+    .comments { margin-top:15px; background:#eef5fb; padding:10px; border-radius:12px; }
+    .comments h3 { margin-bottom:8px; font-weight:600; }
     .comments textarea {
-      width: 100%;
-      height: 80px;
-      border-radius: 10px;
-      border: 1px solid #cfd9e2;
-      padding: 10px;
-      font-family: 'Poppins', sans-serif;
-      resize: none;
+      width:100%;
+      height:60px;
+      border-radius:8px;
+      border:1px solid #cfd9e2;
+      padding:8px;
+      font-family:'Poppins',sans-serif;
+      resize:none;
     }
     .comments button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #7a8fd3;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
+      margin-top:5px;
+      padding:6px 12px;
+      background:#7a8fd3;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
     }
 
     /* Shop page */
-    .shop { max-width: 700px; line-height: 1.8; }
+    .shop { max-width:600px; margin:auto; line-height:1.6; }
+
+    /* Responsive adjustments */
+    @media(max-width:600px){
+      .project-thumb { width: 45%; height: 90px; }
+      .menu { gap:10px; font-size:14px; }
+      .project-box { padding:15px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="logo-box">Your Logo</div>
-      <div>Zohra's Design</div>
-    </div>
-    <nav class="menu">
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('about')">About</a>
-      <a href="#" onclick="showPage('contact')">Contact</a>
-      <a href="#" onclick="showPage('project1')">Project 1</a>
-      <a href="#" onclick="showPage('project2')">Project 2</a>
-      <a href="#" onclick="showPage('project3')">Project 3</a>
-      <a href="#" onclick="showPage('project4')">Project 4</a>
+  <!-- Top navigation -->
+  <div class="topnav">
+    <div class="logo-box">Logo</div>
+    <div class="menu">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About</a>
+      <a onclick="showPage('contact')">Contact</a>
+      <a onclick="showPage('project1')">Project 1</a>
+      <a onclick="showPage('project2')">Project 2</a>
+      <a onclick="showPage('project3')">Project 3</a>
+      <a onclick="showPage('project4')">Project 4</a>
       <a class="disabled">Project 5 – Coming Soon</a>
-      <a href="#" onclick="showPage('shop')">Shop</a>
-    </nav>
-  </aside>
+      <a onclick="showPage('shop')">Shop</a>
+    </div>
+  </div>
 
-  <main class="content">
+  <div class="content">
 
     <!-- Home -->
     <section id="home" class="active">
       <h1>Welcome to Zohra's Design</h1>
-      <p>I create organization projects designed to help you escape procrastination, overwhelm, and stress — so you can move forward with clarity, purpose, and success.</p>
-
+      <p>Organization projects to leave procrastination, stress, and overwhelm behind.</p>
       <div class="projects-home">
-        <div class="project-thumb" style="animation-delay:0s" onclick="showPage('project1')">
-          <img src="project1.png" alt="Project 1">
-        </div>
-        <div class="project-thumb" style="animation-delay:0.1s" onclick="showPage('project2')">
-          <img src="project2.jpeg" alt="Project 2">
-        </div>
-        <div class="project-thumb" style="animation-delay:0.2s" onclick="showPage('project3')">
-          <img src="project3.jpeg" alt="Project 3">
-        </div>
-        <div class="project-thumb" style="animation-delay:0.3s" onclick="showPage('project4')">
-          <img src="project4.jpeg" alt="Project 4">
-        </div>
+        <div class="project-thumb" onclick="showPage('project1')"><img src="project1.png" alt="Project 1"></div>
+        <div class="project-thumb" onclick="showPage('project2')"><img src="project2.jpeg" alt="Project 2"></div>
+        <div class="project-thumb" onclick="showPage('project3')"><img src="project3.jpeg" alt="Project 3"></div>
+        <div class="project-thumb" onclick="showPage('project4')"><img src="project4.jpeg" alt="Project 4"></div>
       </div>
-
       <div class="comments">
         <h3>Leave a Comment:</h3>
         <textarea placeholder="Write your comment..."></textarea>
@@ -211,85 +184,61 @@
     <!-- About -->
     <section id="about">
       <h1>About Zohra's Design</h1>
-      <p>We create organization systems to help you leave procrastination and stress behind, moving forward with clarity and success.</p>
-      <div class="comments">
-        <h3>Leave a Comment:</h3>
-        <textarea placeholder="Write your comment..."></textarea>
-        <button>Submit</button>
-      </div>
+      <p>We help people organize, reduce stress, and achieve success with clarity.</p>
+      <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
       <h1>Contact Us</h1>
       <p>Email: <strong>fatimaechcharrat27@gmail.com</strong></p>
-      <div class="comments">
-        <h3>Leave a Message:</h3>
-        <textarea placeholder="Write your message..."></textarea>
-        <button>Submit</button>
-      </div>
+      <div class="comments"><h3>Leave a Message:</h3><textarea placeholder="Write your message..."></textarea><button>Submit</button></div>
     </section>
 
     <!-- Project 1 -->
     <section id="project1">
-      <div class="project" style="background-image: url('project1.png');">
+      <div class="project" style="background-image:url('project1.png');">
         <div class="project-box">
           <h2>Project One</h2>
           <p>This project helps you structure your goals and build calm routines.</p>
           <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
-          <div class="comments">
-            <h3>Leave a Comment:</h3>
-            <textarea placeholder="Write your comment..."></textarea>
-            <button>Submit</button>
-          </div>
+          <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
         </div>
       </div>
     </section>
 
     <!-- Project 2 -->
     <section id="project2">
-      <div class="project" style="background-image: url('project2.jpeg');">
+      <div class="project" style="background-image:url('project2.jpeg');">
         <div class="project-box">
           <h2>Project Two</h2>
           <p>A system focused on reducing mental overload and decision fatigue.</p>
           <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
-          <div class="comments">
-            <h3>Leave a Comment:</h3>
-            <textarea placeholder="Write your comment..."></textarea>
-            <button>Submit</button>
-          </div>
+          <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
         </div>
       </div>
     </section>
 
     <!-- Project 3 -->
     <section id="project3">
-      <div class="project" style="background-image: url('project3.jpeg');">
+      <div class="project" style="background-image:url('project3.jpeg');">
         <div class="project-box">
           <h2>Project Three</h2>
           <p>Designed to help you stay consistent and aligned with your vision.</p>
           <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
-          <div class="comments">
-            <h3>Leave a Comment:</h3>
-            <textarea placeholder="Write your comment..."></textarea>
-            <button>Submit</button>
-          </div>
+          <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
         </div>
       </div>
     </section>
 
     <!-- Project 4 -->
     <section id="project4">
-      <div class="project" style="background-image: url('project4.jpeg');">
+      <div class="project" style="background-image:url('project4.jpeg');">
         <div class="project-box">
           <h2>Project Four</h2>
           <p>A gentle but powerful approach to productivity and success.</p>
           <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
-          <div class="comments">
-            <h3>Leave a Comment:</h3>
-            <textarea placeholder="Write your comment..."></textarea>
-            <button>Submit</button>
-          </div>
+          <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
         </div>
       </div>
     </section>
@@ -298,18 +247,13 @@
     <section id="shop">
       <div class="shop">
         <h1>The Shop</h1>
-        <p>Welcome to the Zohra’s Design shop — a space where organization meets peace. Here you will find digital tools, planners, and systems created to support your goals, reduce stress, and help you move forward with confidence.</p>
-        <p>Everything is designed with softness, clarity, and intention.</p>
+        <p>Welcome to the Zohra’s Design shop — a space where organization meets peace. Find digital tools, planners, and systems to support your goals and reduce stress.</p>
         <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop Now →</a>
-        <div class="comments">
-          <h3>Leave a Comment:</h3>
-          <textarea placeholder="Write your comment..."></textarea>
-          <button>Submit</button>
-        </div>
+        <div class="comments"><h3>Leave a Comment:</h3><textarea placeholder="Write your comment..."></textarea><button>Submit</button></div>
       </div>
     </section>
 
-  </main>
+  </div>
 
   <script>
     function showPage(id){
