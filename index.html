@@ -1,269 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZohrasDesign</title>
-<style>
-  /* Reset */
-  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zohra's Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background: #f4f8fc;
+      color: #2e3440;
+    }
+    a { text-decoration: none; color: inherit; }
 
-  body { background:#f5f5f5; color:#fff; }
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(180deg, #eef5fb, #f6f1fb);
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      border-right: 1px solid #e1e8ee;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+    .logo-box {
+      width: 90px;
+      height: 90px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #e6f0fb, #efe6fb);
+      border: 1px dashed #9bb8b3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #6b7fa6;
+    }
+    .menu a {
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .menu a:hover { background: #e6f2f1; }
+    .disabled { opacity: 0.5; cursor: not-allowed; }
 
-  /* Cabeçalho com degradê lilás → azul escuro */
-  header {
-    height: 100vh;
-    background: linear-gradient(135deg, #cfa4ff, #3a5cbf);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
+    /* Content */
+    .content {
+      margin-left: 260px;
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+    section { display: none; }
+    section.active { display: block; }
 
-  header img {
-    width: 150px;
-    margin-bottom: 20px;
-  }
+    h1 { font-weight: 800; margin-bottom: 15px; }
+    p { font-weight: 400; line-height: 1.6; }
 
-  header h1 {
-    font-size: 3rem;
-    margin-bottom:10px;
-  }
+    /* Project thumbnails on Home */
+    .projects-home {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .project-thumb {
+      width: 220px;
+      height: 140px;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transform: scale(0);
+      animation: appear 0.5s forwards;
+    }
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @keyframes appear { to { transform: scale(1); } }
 
-  header p {
-    font-size:1.2rem;
-    max-width:700px;
-  }
+    /* Project Box */
+    .project {
+      height: 60vh;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+      margin-bottom: 20px;
+    }
+    .project-box {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      border-left: 6px solid #9bb8b3;
+    }
 
-  .btn {
-    margin-top:20px;
-    padding:12px 30px;
-    background:#ff9fff;
-    border:none;
-    border-radius:25px;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-  }
+    .footer-link {
+      margin-top: 20px;
+      display: inline-block;
+      font-weight: 600;
+      color: #7a8fd3;
+    }
 
-  .btn:hover { background:#7fbfff; }
+    /* Comments */
+    .comments {
+      margin-top: 20px;
+      background: #eef5fb;
+      padding: 15px;
+      border-radius: 15px;
+    }
+    .comments h3 { margin-bottom: 10px; font-weight: 600; }
+    .comments textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 10px;
+      border: 1px solid #cfd9e2;
+      padding: 10px;
+      font-family: 'Poppins', sans-serif;
+      resize: none;
+    }
+    .comments button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #7a8fd3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-  nav {
-    display:flex;
-    justify-content:center;
-    background:#fff;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
-    position:sticky;
-    top:0;
-    z-index:100;
-  }
-
-  nav a {
-    padding:15px 25px;
-    color:#3a5cbf;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
-  }
-
-  nav a:hover {
-    background:#3a5cbf;
-    color:#fff;
-    border-radius:10px;
-  }
-
-  section {
-    padding:60px 20px;
-    max-width:1000px;
-    margin:0 auto;
-  }
-
-  section h2 {
-    font-size:2rem;
-    margin-bottom:20px;
-    color:#3a5cbf;
-    text-align:center;
-  }
-
-  section p {
-    font-size:1.1rem;
-    text-align:center;
-    margin-bottom:30px;
-    color:#333;
-  }
-
-  /* Projetos interativos */
-  #projects {
-    position:relative;
-    color:#fff;
-  }
-
-  .project-buttons {
-    text-align:center;
-    margin-bottom:30px;
-  }
-
-  .project-buttons button {
-    margin:0 10px;
-    padding:10px 20px;
-    background:#cfa4ff;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-    font-weight:bold;
-    color:#fff;
-    transition:0.3s;
-  }
-
-  .project-buttons button.active, .project-buttons button:hover {
-    background:#3a5cbf;
-  }
-
-  .project-card {
-    position:relative;
-    width:100%;
-    height:400px;
-    display:none;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  }
-
-  .project-card.active { display:block; }
-
-  .project-card img {
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:brightness(50%);
-  }
-
-  .project-card .content {
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
-    padding:20px;
-  }
-
-  .project-card .content h3 {
-    font-size:2rem;
-    margin-bottom:10px;
-    color:#ffceff;
-  }
-
-  .project-card .content p {
-    font-size:1.1rem;
-    color:#fff;
-  }
-
-  footer {
-    background:#3a5cbf;
-    color:#fff;
-    text-align:center;
-    padding:20px;
-  }
-
-  footer a { color:#fff; text-decoration:underline; }
-
-</style>
+    /* Shop page */
+    .shop { max-width: 700px; line-height: 1.8; }
+  </style>
 </head>
 <body>
 
-<!-- Cabeçalho -->
-<header>
-  <img src="logo.jpeg" alt="ZohrasDesign Logo">
-  <h1>ZohrasDesign</h1>
-  <p>Helping you organize your life, achieve goals, and overcome procrastination & overwhelm</p>
-  <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});">See Projects</button>
-</header>
-
-<!-- Navegação -->
-<nav>
-  <a href="#projects">Projects</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- Projetos -->
-<section id="projects">
-  <h2>My Projects</h2>
-  <div class="project-buttons">
-    <button class="active" onclick="showProject(0)">1</button>
-    <button onclick="showProject(1)">2</button>
-    <button onclick="showProject(2)">3</button>
-    <button onclick="showProject(3)">4</button>
-  </div>
-
-  <div class="project-card active">
-    <img src="mockup1.png" alt="Project 1">
-    <div class="content">
-      <h3>Project One</h3>
-      <p>Description about Project One. Goals, steps, and results shown here.</p>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-box">Your Logo</div>
+      <div>Zohra's Design</div>
     </div>
-  </div>
+    <nav class="menu">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+      <a href="#" onclick="showPage('project1')">Project 1</a>
+      <a href="#" onclick="showPage('project2')">Project 2</a>
+      <a href="#" onclick="showPage('project3')">Project 3</a>
+      <a href="#" onclick="showPage('project4')">Project 4</a>
+      <a class="disabled">Project 5 – Coming Soon</a>
+      <a href="#" onclick="showPage('shop')">Shop</a>
+    </nav>
+  </aside>
 
-  <div class="project-card">
-    <img src="MOCKUP 2026.jpeg" alt="Project 2">
-    <div class="content">
-      <h3>Project Two</h3>
-      <p>Description about Project Two. Goals, steps, and results shown here.</p>
-    </div>
-  </div>
+  <main class="content">
 
-  <div class="project-card">
-    <img src="mockup3.3.jpeg" alt="Project 3">
-    <div class="content">
-      <h3>Project Three</h3>
-      <p>Description about Project Three. Goals, steps, and results shown here.</p>
-    </div>
-  </div>
+    <!-- Home -->
+    <section id="home" class="active">
+      <h1>Welcome to Zohra's Design</h1>
+      <p>I create organization projects designed to help you escape procrastination, overwhelm, and stress — so you can move forward with clarity, purpose, and success.</p>
 
-  <div class="project-card">
-    <img src="mockup4.4.jpeg" alt="Project 4">
-    <div class="content">
-      <h3>Project Four</h3>
-      <p>Description about Project Four. Goals, steps, and results shown here.</p>
-    </div>
-  </div>
-</section>
+      <div class="projects-home">
+        <div class="project-thumb" style="animation-delay:0s" onclick="showPage('project1')">
+          <img src="project1.png" alt="Project 1">
+        </div>
+        <div class="project-thumb" style="animation-delay:0.1s" onclick="showPage('project2')">
+          <img src="project2.jpeg" alt="Project 2">
+        </div>
+        <div class="project-thumb" style="animation-delay:0.2s" onclick="showPage('project3')">
+          <img src="project3.jpeg" alt="Project 3">
+        </div>
+        <div class="project-thumb" style="animation-delay:0.3s" onclick="showPage('project4')">
+          <img src="project4.jpeg" alt="Project 4">
+        </div>
+      </div>
 
-<!-- Sobre -->
-<section id="about">
-  <h2>About Zohra´s Design</h2>
-  <p>I am passionate about helping people reach their full potential through organization, planning, and mindful productivity. Together, we’ll tackle overwhelm and procrastination to achieve meaningful results.</p>
-</section>
+      <div class="comments">
+        <h3>Leave a Comment:</h3>
+        <textarea placeholder="Write your comment..."></textarea>
+        <button>Submit</button>
+      </div>
+    </section>
 
-<!-- Contacto -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Have a project, goal, or challenge? Reach out and let’s organize your path to success.</p>
-  <p>Email: <a href="fatimaechcharrat27@gmail.com">fatimaechcharrat27@gmail.com</a></p>
-</section>
+    <!-- About -->
+    <section id="about">
+      <h1>About Zohra's Design</h1>
+      <p>We create organization systems to help you leave procrastination and stress behind, moving forward with clarity and success.</p>
+      <div class="comments">
+        <h3>Leave a Comment:</h3>
+        <textarea placeholder="Write your comment..."></textarea>
+        <button>Submit</button>
+      </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-  &copy; 2026 ZohrasDesign | <a href="#">Privacy Policy</a>
-</footer>
+    <!-- Contact -->
+    <section id="contact">
+      <h1>Contact Us</h1>
+      <p>Email: <strong>fatimaechcharrat27@gmail.com</strong></p>
+      <div class="comments">
+        <h3>Leave a Message:</h3>
+        <textarea placeholder="Write your message..."></textarea>
+        <button>Submit</button>
+      </div>
+    </section>
 
-<script>
-  const projects = document.querySelectorAll('.project-card');
-  const buttons = document.querySelectorAll('.project-buttons button');
+    <!-- Project 1 -->
+    <section id="project1">
+      <div class="project" style="background-image: url('project1.png');">
+        <div class="project-box">
+          <h2>Project One</h2>
+          <p>This project helps you structure your goals and build calm routines.</p>
+          <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
+          <div class="comments">
+            <h3>Leave a Comment:</h3>
+            <textarea placeholder="Write your comment..."></textarea>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  function showProject(index) {
-    projects.forEach(p => p.classList.remove('active'));
-    buttons.forEach(b => b.classList.remove('active'));
-    projects[index].classList.add('active');
-    buttons[index].classList.add('active');
-  }
-</script>
+    <!-- Project 2 -->
+    <section id="project2">
+      <div class="project" style="background-image: url('project2.jpeg');">
+        <div class="project-box">
+          <h2>Project Two</h2>
+          <p>A system focused on reducing mental overload and decision fatigue.</p>
+          <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
+          <div class="comments">
+            <h3>Leave a Comment:</h3>
+            <textarea placeholder="Write your comment..."></textarea>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project 3 -->
+    <section id="project3">
+      <div class="project" style="background-image: url('project3.jpeg');">
+        <div class="project-box">
+          <h2>Project Three</h2>
+          <p>Designed to help you stay consistent and aligned with your vision.</p>
+          <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
+          <div class="comments">
+            <h3>Leave a Comment:</h3>
+            <textarea placeholder="Write your comment..."></textarea>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project 4 -->
+    <section id="project4">
+      <div class="project" style="background-image: url('project4.jpeg');">
+        <div class="project-box">
+          <h2>Project Four</h2>
+          <p>A gentle but powerful approach to productivity and success.</p>
+          <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop this →</a>
+          <div class="comments">
+            <h3>Leave a Comment:</h3>
+            <textarea placeholder="Write your comment..."></textarea>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shop">
+      <div class="shop">
+        <h1>The Shop</h1>
+        <p>Welcome to the Zohra’s Design shop — a space where organization meets peace. Here you will find digital tools, planners, and systems created to support your goals, reduce stress, and help you move forward with confidence.</p>
+        <p>Everything is designed with softness, clarity, and intention.</p>
+        <a href="https://payhip.com/ZohrasDesign" class="footer-link">Shop Now →</a>
+        <div class="comments">
+          <h3>Leave a Comment:</h3>
+          <textarea placeholder="Write your comment..."></textarea>
+          <button>Submit</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function showPage(id){
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0,0);
+    }
+  </script>
 
 </body>
 </html>
